@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  kafka:
+    container_name: kafka-akbank
+    image: bashj79/kafka-kraft
+    ports:
+      - "9092:9092"
+    volumes:
+      - kafka_data:/opt/kafka/kafka-logs
+volumes:
+  kafka_data:
