@@ -1,4 +1,4 @@
-package com.burakkolay.apiconnector.business.dto.response;
+package com.burakkolay.commonpackage.business.dto.response;
 
 
 import lombok.AllArgsConstructor;
