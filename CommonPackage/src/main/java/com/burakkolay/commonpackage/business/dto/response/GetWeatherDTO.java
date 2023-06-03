@@ -22,7 +22,6 @@ public class GetWeatherDTO {
         private Main main;
         private String dt_txt;
     }
-
     @Getter
     @Setter
     private static class Main{
