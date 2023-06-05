@@ -43,7 +43,7 @@ public class SecurityConfiguration {
                         "/swagger-ui.html"
                 )
                 .permitAll()
-                .requestMatchers("/api/v1/weather/**").hasAnyRole("USER")
+                .requestMatchers("/api/v1/weather/**","/api/v1/user/**").hasAnyRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()
