@@ -21,23 +21,23 @@ public class UserManager implements UserService {
 
     @Override
     public void saveCity(String city) {
-        Optional<User> user = rules.getUserPrincipals();
-        ArrayList<String> cities = user.get().getCities();
+        rules.checkIfCityExists(city);
+        User user = rules.getUserPrincipals();
+        ArrayList<String> cities = user.getCities();
         if (cities == null)
             cities = new ArrayList<>();
         cities.add(city);
-        user.get().setCities(cities);
-        user.ifPresent(repository::save);
+        user.setCities(cities);
+        repository.save(user);
     }
 
     @Override
     public HashMap<String, Weather> getWeatherOfSavedCities() {
-        Optional<User> user = rules.getUserPrincipals();
-        ArrayList<String> cities = user.get().getCities();
+        User user = rules.getUserPrincipals();
+        ArrayList<String> cities = user.getCities();
         HashMap<String, Weather> weather = new HashMap<>();
         for (String city : cities)
             weather.put(city, weatherManager.getWeather(city));
         return weather;
-
     }
 }

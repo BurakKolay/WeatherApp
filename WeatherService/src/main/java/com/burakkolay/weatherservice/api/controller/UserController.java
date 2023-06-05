@@ -4,7 +4,6 @@ import com.burakkolay.weatherservice.business.abstracts.UserService;
 import com.burakkolay.weatherservice.entities.Weather;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;

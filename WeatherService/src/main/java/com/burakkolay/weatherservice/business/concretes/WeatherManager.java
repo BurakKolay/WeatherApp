@@ -25,7 +25,7 @@ public class WeatherManager {
 
     @PreAuthorize("hasRole('USER')")
     public Weather getWeather(String city) {
-        producer.sendMessage(new LogDTO(rules.getUserPrincipals().get().getUsername(),"Get Weather"),"logging");
+        producer.sendMessage(new LogDTO(rules.getUserPrincipals().getUsername(),"Get Weather"),"logging");
         return weatherApi.getWeather(city, appId,units);
     }
 }
