@@ -1,4 +1,4 @@
-package com.burakkolay.weatherservice.configuration;
+package com.burakkolay.weatherservice.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

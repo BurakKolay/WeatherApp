@@ -1,4 +1,4 @@
-package com.burakkolay.weatherservice.configuration;
+package com.burakkolay.weatherservice.security;
 
 import com.burakkolay.weatherservice.repository.UserRepository;
 import lombok.AllArgsConstructor;

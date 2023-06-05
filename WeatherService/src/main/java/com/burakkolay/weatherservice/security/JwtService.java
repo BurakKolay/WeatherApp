@@ -1,4 +1,4 @@
-package com.burakkolay.weatherservice.configuration;
+package com.burakkolay.weatherservice.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
