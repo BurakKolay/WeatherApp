@@ -1,5 +1,6 @@
 package com.burakkolay.logservice.business.kafka.consumer;
 import com.burakkolay.logservice.business.abstracts.LogService;
+import com.burakkolay.logservice.business.mapper.LogMapper;
 import com.burakkolay.logservice.entities.Log;
 import com.burakkolay.commonpackage.business.dto.response.LogDTO;
 import jakarta.annotation.PostConstruct;
@@ -13,7 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class WeatherConsumer {
     private final LogService service;
-
+    private final LogMapper mapper;
     @PostConstruct
     public void createDb(){
         service.add(new Log());
@@ -23,12 +24,7 @@ public class WeatherConsumer {
             groupId = "logging-for-db"
     )
     public void consume(LogDTO log) {
-        System.out.println(log.getUsername());
-        Log logs = new Log();
-        logs.setCreateDate(log.getCreateDate());
-        logs.setUsername(log.getUsername());
-        logs.setOperations(log.getOperations());
-        logs.setId(UUID.randomUUID().toString());
+        Log logs = mapper.toLog(log);
         service.add(logs);
     }
 }
