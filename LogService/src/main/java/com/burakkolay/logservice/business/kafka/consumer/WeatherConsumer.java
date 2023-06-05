@@ -1,9 +1,7 @@
-package com.burakkolay.apiconnector.business.kafka.consumer;
-import com.burakkolay.apiconnector.business.abstracts.LogService;
-import com.burakkolay.apiconnector.entities.Log;
-import com.burakkolay.apiconnector.repository.LogRepository;
+package com.burakkolay.logservice.business.kafka.consumer;
+import com.burakkolay.logservice.business.abstracts.LogService;
+import com.burakkolay.logservice.entities.Log;
 import com.burakkolay.commonpackage.business.dto.response.LogDTO;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;

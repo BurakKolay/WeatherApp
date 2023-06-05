@@ -1,11 +1,9 @@
-package com.burakkolay.apiconnector.entities;
+package com.burakkolay.logservice.entities;
 
-import jakarta.annotation.Generated;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter

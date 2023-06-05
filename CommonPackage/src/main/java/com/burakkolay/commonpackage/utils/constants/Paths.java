@@ -6,7 +6,7 @@ public class Paths {
     public static class User {
         public static final String ServiceBasePackage = "com.burakkolay.weatherservice";
     }
-    public static class Weather {
-        public static final String ServiceBasePackage = "com.burakkolay.apiconnector";
+    public static class Log {
+        public static final String ServiceBasePackage = "com.burakkolay.logservice";
     }
 }
