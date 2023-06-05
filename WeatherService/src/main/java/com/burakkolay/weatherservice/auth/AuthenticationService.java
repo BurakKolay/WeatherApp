@@ -2,7 +2,7 @@ package com.burakkolay.weatherservice.auth;
 
 import com.burakkolay.weatherservice.entities.Role;
 import com.burakkolay.weatherservice.repository.UserRepository;
-import com.burakkolay.weatherservice.configuration.JwtService;
+import com.burakkolay.weatherservice.security.JwtService;
 import lombok.RequiredArgsConstructor;
 import com.burakkolay.weatherservice.entities.User;
 import org.springframework.security.authentication.AuthenticationManager;
