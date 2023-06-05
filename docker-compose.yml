@@ -8,5 +8,14 @@ services:
       - "9092:9092"
     volumes:
       - kafka_data:/opt/kafka/kafka-logs
+  logdb:
+    container_name: log-dev
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db/
 volumes:
   kafka_data:
+  mongodb_data:
+
