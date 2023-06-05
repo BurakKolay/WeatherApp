@@ -1,7 +1,7 @@
 package com.burakkolay.weatherservice.configuration;
 
 
-import com.burakkolay.weatherservice.entities.Role;
+import com.burakkolay.weatherservice.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
