@@ -1,9 +1,11 @@
 package com.burakkolay.weatherservice.business.concretes;
 
 
-import com.burakkolay.commonpackage.business.dto.response.GetWeatherDTO;
 import com.burakkolay.commonpackage.kafka.producer.KafkaProducer;
 import com.burakkolay.weatherservice.api.client.WeatherApi;
+import com.burakkolay.weatherservice.business.rules.UserBusinessRules;
+import com.burakkolay.commonpackage.business.dto.response.LogDTO;
+import com.burakkolay.weatherservice.entities.Weather;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,11 +20,12 @@ public class WeatherManager {
     private String units;
     private final WeatherApi weatherApi;
     private final KafkaProducer producer;
+    private final UserBusinessRules rules;
 
 
     @PreAuthorize("hasRole('USER')")
-    public GetWeatherDTO getWeather(String city) {
-        GetWeatherDTO weather = weatherApi.getWeather(city, appId,units);
-        return weather;
+    public Weather getWeather(String city) {
+        producer.sendMessage(new LogDTO(rules.getUserPrincipals().get().getUsername(),"Get Weather"),"logging");
+        return weatherApi.getWeather(city, appId,units);
     }
 }
