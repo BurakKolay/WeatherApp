@@ -15,13 +15,12 @@ import org.springframework.stereotype.Service;
 public class KafkaProducer {
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public <T> void sendMessage(T city, String topic) {
-        log.info(String.format("%s event => %s", topic, city.toString()));
+    public <T> void sendMessage(T record, String topic) {
+        log.info(String.format("%s event => %s", topic, record.toString()));
         Message<T> message = MessageBuilder
-                .withPayload(city)
+                .withPayload(record)
                 .setHeader(KafkaHeaders.TOPIC, topic)
                 .build();
-
         kafkaTemplate.send(message);
     }
 }
