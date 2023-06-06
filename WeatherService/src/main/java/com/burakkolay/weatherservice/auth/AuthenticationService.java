@@ -1,5 +1,7 @@
 package com.burakkolay.weatherservice.auth;
 
+import com.burakkolay.weatherservice.configuration.exceptions.BusinessException;
+import com.burakkolay.weatherservice.configuration.exceptions.Messages.Messages;
 import com.burakkolay.weatherservice.entities.Role;
 import com.burakkolay.weatherservice.repository.UserRepository;
 import com.burakkolay.weatherservice.security.JwtService;
@@ -19,6 +21,8 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     public AuthenticationResponse register(RegisterRequest request) {
+        if(repository.existsByUsername(request.getUsername()))
+            throw new BusinessException(Messages.User.UserAlreadyExists);
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())

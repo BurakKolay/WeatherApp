@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User,Long> {
 
     Optional<User> findByUsername(String username);
-
+    boolean existsByUsername(String username);
     @Query("SELECT cities from User where username=:username")
     ArrayList<String> findCityByUsername(String username);
 
