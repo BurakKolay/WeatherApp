@@ -5,6 +5,8 @@ import com.burakkolay.commonpackage.kafka.producer.KafkaProducer;
 import com.burakkolay.weatherservice.api.client.WeatherApi;
 import com.burakkolay.weatherservice.business.rules.UserBusinessRules;
 import com.burakkolay.commonpackage.business.dto.response.LogDTO;
+import com.burakkolay.weatherservice.configuration.exceptions.BusinessException;
+import com.burakkolay.weatherservice.configuration.exceptions.Messages.Messages;
 import com.burakkolay.weatherservice.entities.Weather;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +28,10 @@ public class WeatherManager {
     @PreAuthorize("hasRole('USER')")
     public Weather getWeather(String city) {
         producer.sendMessage(new LogDTO(rules.getUserPrincipals().getUsername(),"Get Weather"),"logging");
-        return weatherApi.getWeather(city, appId,units);
+        try{
+            return weatherApi.getWeather(city, appId, units);
+        }catch (RuntimeException e){
+            throw new BusinessException(Messages.Weather.CityNotFound);
+        }
     }
 }
