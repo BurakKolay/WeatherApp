@@ -5,6 +5,7 @@ import com.burakkolay.commonpackage.utils.constants.ExceptionTypes;
 import jakarta.validation.ValidationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,6 +33,12 @@ public class RestExceptionHandler {
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY) // 422
     public ExceptionResult<Object> handleValidationException(ValidationException exception) {
         return new ExceptionResult<>(ExceptionTypes.Exception.Validation, exception.getMessage());
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ExceptionResult<Object> handleForbiddenException(AccessDeniedException exception){
+        return new ExceptionResult<>(ExceptionTypes.Exception.Forbidden, exception.getMessage());
     }
 
     @ExceptionHandler
