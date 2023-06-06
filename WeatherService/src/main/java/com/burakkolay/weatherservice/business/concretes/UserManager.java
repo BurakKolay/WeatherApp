@@ -22,6 +22,7 @@ public class UserManager implements UserService {
     @Override
     public void saveCity(String city) {
         rules.checkIfCityExists(city);
+        weatherManager.getWeather(city);
         User user = rules.getUserPrincipals();
         ArrayList<String> cities = user.getCities();
         if (cities == null)
@@ -33,6 +34,7 @@ public class UserManager implements UserService {
 
     @Override
     public HashMap<String, Weather> getWeatherOfSavedCities() {
+        rules.checkIfUserCityNotExists();
         User user = rules.getUserPrincipals();
         ArrayList<String> cities = user.getCities();
         HashMap<String, Weather> weather = new HashMap<>();

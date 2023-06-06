@@ -30,8 +30,16 @@ public class UserBusinessRules {
 
     public void checkIfCityExists(String city){
         User user = getUserPrincipals();
-        ArrayList<String> cityByUsername = repository.findCityByUsername(user.getUsername());
-        if(cityByUsername.get(0).toLowerCase().contains(city.toLowerCase()))
-            throw new BusinessException(Messages.User.CityAlreadyExists);
+        ArrayList<String> cities = user.getCities();
+        for(String userCity : cities){
+            if(userCity.equalsIgnoreCase(city))
+                throw new BusinessException(Messages.User.CityAlreadyExists);
+        }
+    }
+    public void checkIfUserCityNotExists(){
+        User user = getUserPrincipals();
+        ArrayList<String> cities = user.getCities();
+        if(cities==null)
+            throw new BusinessException(Messages.User.UserCityNotExists);
     }
 }
