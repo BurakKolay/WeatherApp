@@ -1,5 +1,7 @@
 package com.burakkolay.weatherservice.auth;
 
+import com.burakkolay.commonpackage.business.dto.response.LogDTO;
+import com.burakkolay.commonpackage.kafka.producer.KafkaProducer;
 import com.burakkolay.weatherservice.configuration.exceptions.BusinessException;
 import com.burakkolay.weatherservice.configuration.exceptions.Messages.Messages;
 import com.burakkolay.weatherservice.entities.Role;
@@ -20,6 +22,7 @@ public class AuthenticationService {
     private final PasswordEncoder  passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final KafkaProducer producer;
     public AuthenticationResponse register(RegisterRequest request) {
         if(repository.existsByUsername(request.getUsername()))
             throw new BusinessException(Messages.User.UserAlreadyExists);
@@ -32,6 +35,7 @@ public class AuthenticationService {
                 .build();
         repository.save(user);
         var jwtToken =jwtService.generateToken(user);
+        producer.sendMessage(new LogDTO(user.getUsername(), "User register"),"logging");
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
@@ -43,6 +47,7 @@ public class AuthenticationService {
         );
         var user = repository.findByUsername(request.getUsername()).orElseThrow();
         var jwtToken =jwtService.generateToken(user);
+        producer.sendMessage(new LogDTO(user.getUsername(), "User authenticate"),"logging");
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
