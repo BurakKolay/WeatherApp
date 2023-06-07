@@ -5,12 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication(scanBasePackages = {Paths.ConfigurationBasePackage, Paths.User.ServiceBasePackage})
+@SpringBootApplication(scanBasePackages = {Paths.ConfigurationBasePackage, Paths.Weather.ServiceBasePackage})
 @EnableFeignClients
-public class UserServiceApplication {
+public class WeatherServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
+        SpringApplication.run(WeatherServiceApplication.class, args);
     }
 
 }
