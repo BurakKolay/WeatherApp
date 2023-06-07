@@ -20,16 +20,16 @@ public class UserManager implements UserService {
     private final UserBusinessRules rules;
 
     @Override
-    public void saveCity(String city) {
+    public User saveCity(String city) {
         User user = rules.getUserPrincipals();
-        rules.checkIfCityExists(city);
+        rules.checkIfCityExists(city,user);
         weatherManager.getWeather(city);
         ArrayList<String> cities = user.getCities();
         if (cities == null)
             cities = new ArrayList<>();
         cities.add(city);
         user.setCities(cities);
-        repository.save(user);
+        return repository.save(user);
     }
 
     @Override
