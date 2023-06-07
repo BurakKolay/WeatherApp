@@ -1,6 +1,7 @@
 package com.burakkolay.weatherservice.business.concretes;
 
 
+import com.burakkolay.commonpackage.kafka.producer.KafkaProducer;
 import com.burakkolay.weatherservice.business.rules.UserBusinessRules;
 import com.burakkolay.weatherservice.configuration.exceptions.BusinessException;
 import com.burakkolay.weatherservice.entities.Role;
@@ -25,7 +26,8 @@ class UserManagerTest {
     private UserRepository repository;
     @Mock
     private UserBusinessRules rules;
-
+    @Mock
+    private KafkaProducer producer;
     @InjectMocks
     private UserManager userManager;
 

@@ -28,6 +28,8 @@ class WeatherManagerTest {
     private WeatherApi weatherApi;
     @Mock
     private UserBusinessRules rules;
+    @Mock
+    private KafkaProducer producer;
 
     @Test
     void shouldGetWeather() {

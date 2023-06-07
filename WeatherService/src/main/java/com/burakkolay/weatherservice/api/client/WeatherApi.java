@@ -1,7 +1,6 @@
 package com.burakkolay.weatherservice.api.client;
 
 
-import com.burakkolay.commonpackage.business.dto.response.GetWeatherDTO;
 import com.burakkolay.weatherservice.entities.Weather;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
