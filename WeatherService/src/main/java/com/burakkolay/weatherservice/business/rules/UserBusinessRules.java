@@ -26,8 +26,7 @@ public class UserBusinessRules {
         }
     }
 
-    public void checkIfCityExists(String city){
-        User user = getUserPrincipals();
+    public void checkIfCityExists(String city,User user){
         ArrayList<String> cities = user.getCities();
         for(String userCity : cities){
             if(userCity.equalsIgnoreCase(city))
