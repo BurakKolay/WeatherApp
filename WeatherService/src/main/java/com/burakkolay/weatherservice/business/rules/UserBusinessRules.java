@@ -28,6 +28,8 @@ public class UserBusinessRules {
 
     public void checkIfCityExists(String city,User user){
         ArrayList<String> cities = user.getCities();
+        if(cities == null)
+            return;
         for(String userCity : cities){
             if(userCity.equalsIgnoreCase(city))
                 throw new BusinessException(Messages.User.CityAlreadyExists);
