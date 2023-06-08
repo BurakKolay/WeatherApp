@@ -6,6 +6,8 @@ import com.burakkolay.logservice.repository.LogRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class LogManager implements LogService {
@@ -13,5 +15,20 @@ public class LogManager implements LogService {
     @Override
     public void add(Log log) {
         repository.save(log);
+    }
+
+    @Override
+    public List<Log> getAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Log getById(String id) {
+        return repository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public void deleteById(String id) {
+        repository.deleteById(id);
     }
 }
