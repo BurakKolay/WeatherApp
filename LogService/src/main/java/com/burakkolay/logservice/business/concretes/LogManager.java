@@ -13,8 +13,8 @@ import java.util.List;
 public class LogManager implements LogService {
     private final LogRepository repository;
     @Override
-    public void add(Log log) {
-        repository.save(log);
+    public Log add(Log log) {
+        return repository.save(log);
     }
 
     @Override
