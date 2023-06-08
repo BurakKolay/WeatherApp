@@ -40,7 +40,9 @@ public class SecurityConfiguration {
                         "/configuration/security",
                         "/swagger-ui/**",
                         "/webjars/**",
-                        "/swagger-ui.html"
+                        "/swagger-ui.html",
+                        "/actuator/**",
+                        "/actuator/prometheus/**"
                 )
                 .permitAll()
                 .requestMatchers("/api/v1/weather/**","/api/v1/user/**").hasAnyRole("USER")
