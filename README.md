@@ -19,6 +19,7 @@ In this project, a weather application was developed that provides weather forec
 - **Eureka Server:** Service discovery server for microservices architecture.
 - **Mockito:** Framework used for unit testing and mocking dependencies.
 - **Docker:** Containerization platform used for packaging the application and its dependencies.
+- **Zipkin:** Distributed tracing system used for tracking application transactions and debugging
 ## Installation
 
 - Clone the project repository
@@ -119,3 +120,6 @@ In this project, a weather application was developed that provides weather forec
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `String` | **Required**. Log id|
+
+### Postman Documentation
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/burakkolay/workspace/akbank/collection/21613379-312e7e5c-1adc-422a-a5a4-87f61d2d5380?action=share&creator=21613379)
